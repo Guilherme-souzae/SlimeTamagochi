@@ -36,7 +36,7 @@ public class SlimeSlimeBehavior : MonoBehaviour, IBeginDragHandler, IDragHandler
         }
     }
 
-    public void OnEnable()
+    private void OnEnable()
     {
         rectTransform.anchoredPosition = Vector2.zero;
         speed = Vector2.zero;
