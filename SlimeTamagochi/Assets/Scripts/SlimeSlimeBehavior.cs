@@ -6,7 +6,11 @@ using UnityEngine.EventSystems;
 
 public class SlimeSlimeBehavior : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
-    [Header("Configurações do SlimeSlime")]
+    [Header("Configurações do minigame")]
+    public float minigameDuration = 5f;
+    public float returnalStep = 0.2f;
+
+    [Header("Configurações da física")]
     public float dragSmoothness = 10f;
     public float friction = 0.5f;
     public float bounciness = 1f;
@@ -16,7 +20,7 @@ public class SlimeSlimeBehavior : MonoBehaviour, IBeginDragHandler, IDragHandler
     private bool isDragging;
     private Vector2 speed;
 
-    private void Start()
+    private void Awake()
     {
         rectTransform = GetComponent<RectTransform>();
         canvasRect = GetComponentInParent<Canvas>().GetComponent<RectTransform>();
@@ -32,11 +36,13 @@ public class SlimeSlimeBehavior : MonoBehaviour, IBeginDragHandler, IDragHandler
         }
     }
 
-    public void Reset()
+    public void OnEnable()
     {
         rectTransform.anchoredPosition = Vector2.zero;
         speed = Vector2.zero;
     }
+
+    // Fisica
 
     public void OnBeginDrag(PointerEventData eventData)
     {

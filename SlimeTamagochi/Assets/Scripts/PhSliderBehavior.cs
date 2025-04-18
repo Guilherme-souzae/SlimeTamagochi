@@ -15,6 +15,19 @@ public class PhSliderBehavior : MonoBehaviour
         phSlider.interactable = false;
     }
 
+    private void OnEnable()
+    {
+        increase = true;
+        running = true;
+        phSlider.enabled = true;
+        phSlider.value = phSlider.maxValue / 2f;
+    }
+
+    private void OnDisable()
+    {
+        running = false;
+    }
+
     private void Update()
     {
         if (running)
@@ -40,20 +53,7 @@ public class PhSliderBehavior : MonoBehaviour
         }
     }
 
-    public void Reset()
-    {
-        increase = true;
-        running = true;
-        phSlider.enabled = true;
-        phSlider.value = phSlider.maxValue / 2f;
-    }
-
-    public void Stop()
-    {
-        running = false;
-    }
-
-    public float getPh()
+    public float GetPh()
     {
         return (phSlider.value - phSlider.minValue) / (phSlider.maxValue - phSlider.minValue) * (14f - 0f);
     }

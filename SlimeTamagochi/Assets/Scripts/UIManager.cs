@@ -15,9 +15,6 @@ public class UIManager : MonoBehaviour
     public Button humidityActivateButton;
     public SlimeSlimeBehavior slimeSlimeBehavior;
 
-    [Header("Configurações")]
-    public float HumidityMinigameDuration = 5f;
-
     private void Start()
     {
         phMinigameActivateButton.onClick.AddListener(ShowPhMinigame);
@@ -35,31 +32,40 @@ public class UIManager : MonoBehaviour
     // Ph Minigame
     public void ShowPhMinigame()
     {
+        HideButtons();
         phMinigamePanel.SetActive(true);
-        phMinigameActivateButton.gameObject.SetActive(false);
-        phSliderBehavior.Reset();
     }
 
     public void HidePhMinigame()
     {
-        Debug.Log(phSliderBehavior.getPh());
-        phSliderBehavior.Stop();
+        ShowButtons();
         phMinigamePanel.SetActive(false);
-        phMinigameActivateButton.gameObject.SetActive(true);
     }
 
     // Humidity Minigame
     public void ShowHumidityMinigame()
     {
-        slimeSlimeBehavior.Reset();
+        HideButtons();
         humidityMinigamePanel.SetActive(true);
-        humidityActivateButton.gameObject.SetActive(false);
-        Invoke("HideHumidityMinigame", HumidityMinigameDuration);
+        Invoke("HideHumidityMinigame", slimeSlimeBehavior.minigameDuration);
     }
 
     private void HideHumidityMinigame()
     {
+        ShowButtons();
         humidityMinigamePanel.SetActive(false);
+    }
+
+    // Utils
+    private void HideButtons()
+    {
+        phMinigameActivateButton.gameObject.SetActive(false);
+        humidityActivateButton.gameObject.SetActive(false);
+    }
+
+    private void ShowButtons()
+    {
+        phMinigameActivateButton.gameObject.SetActive(true);
         humidityActivateButton.gameObject.SetActive(true);
     }
 }
