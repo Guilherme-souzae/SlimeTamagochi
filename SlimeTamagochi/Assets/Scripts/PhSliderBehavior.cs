@@ -25,6 +25,7 @@ public class PhSliderBehavior : MonoBehaviour
 
     private void OnDisable()
     {
+        SlimeLogic.Instance.increasePh((phSlider.value - phSlider.minValue) / (phSlider.maxValue - phSlider.minValue) * (14f - 0f));
         running = false;
     }
 
@@ -51,10 +52,5 @@ public class PhSliderBehavior : MonoBehaviour
                 }
             }
         }
-    }
-
-    public float GetPh()
-    {
-        return (phSlider.value - phSlider.minValue) / (phSlider.maxValue - phSlider.minValue) * (14f - 0f);
     }
 }

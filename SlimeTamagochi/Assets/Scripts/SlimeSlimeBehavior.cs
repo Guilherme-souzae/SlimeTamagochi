@@ -7,6 +7,7 @@ using UnityEngine.EventSystems;
 public class SlimeSlimeBehavior : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
     [Header("Configurações do minigame")]
+    public float clickHumidityRate = 0.1f;
     public float minigameDuration = 5f;
     public float returnalStep = 0.2f;
 
@@ -40,6 +41,12 @@ public class SlimeSlimeBehavior : MonoBehaviour, IBeginDragHandler, IDragHandler
     {
         rectTransform.anchoredPosition = Vector2.zero;
         speed = Vector2.zero;
+        InvokeRepeating("CheckMovement", 0f, returnalStep);
+    }
+
+    private void OnDisable()
+    {
+        CancelInvoke("CheckMovement");
     }
 
     // Fisica
@@ -98,5 +105,11 @@ public class SlimeSlimeBehavior : MonoBehaviour, IBeginDragHandler, IDragHandler
         }
 
         rectTransform.anchoredPosition = pos;
+    }
+
+    private void CheckMovement()
+    {
+        float returnal = speed.magnitude;
+        SlimeLogic.Instance.increaseHumidity(returnal);
     }
 }

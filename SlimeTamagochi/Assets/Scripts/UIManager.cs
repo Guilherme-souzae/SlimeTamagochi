@@ -5,9 +5,6 @@ using UnityEngine;
 
 public class UIManager : MonoBehaviour
 {
-    [Header("Dependências do cenário")]
-    public GameObject plate;
-
     [Header("Dependências PH")]
     public GameObject phMinigamePanel;
     public Button phMinigameActivateButton;
@@ -69,16 +66,18 @@ public class UIManager : MonoBehaviour
     {
         phMinigameActivateButton.gameObject.SetActive(false);
         humidityActivateButton.gameObject.SetActive(false);
+        eatingActivateButton.gameObject.SetActive(false);
     }
 
     private void ShowButtons()
     {
         phMinigameActivateButton.gameObject.SetActive(true);
         humidityActivateButton.gameObject.SetActive(true);
+        eatingActivateButton.gameObject.SetActive(true);
     }
 
     private void GoEat()
     {
-        SlimeMovement.Instance.SetDestination(plate.transform.position);
+        SlimeMovement.Instance.EatingRoutine();
     }
 }

@@ -66,7 +66,7 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 82bf378dcd83a4e4b8f60a534880e461,
         type: 3}
       propertyPath: m_Name
-      value: BaseSlime 1
+      value: BaseSlime
       objectReference: {fileID: 0}
     - target: {fileID: 8265363998462577945, guid: 82bf378dcd83a4e4b8f60a534880e461,
         type: 3}
@@ -109,10 +109,6 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 7614731736197222131}
-    - targetCorrespondingSourceObject: {fileID: 8052677790429725804, guid: 82bf378dcd83a4e4b8f60a534880e461,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 3715953504228033202}
     - targetCorrespondingSourceObject: {fileID: -6327638464936509850, guid: 82bf378dcd83a4e4b8f60a534880e461,
         type: 3}
       insertIndex: -1
@@ -360,22 +356,6 @@ SpringJoint:
   m_EnablePreprocessing: 1
   m_MassScale: 1
   m_ConnectedMassScale: 1
---- !u!114 &3715953504228033202
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1267698680211967077}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 583e3d95bfe463f41827a3a0c888cd73, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  jumpForce: 50
-  jumpInterval: 5
-  moveForce: 5
-  jumpChance: 100
 --- !u!1 &1671111974720718611 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -1628080342083006694, guid: 82bf378dcd83a4e4b8f60a534880e461,
