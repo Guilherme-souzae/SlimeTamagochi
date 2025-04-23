@@ -109,7 +109,6 @@ public class SlimeSlimeBehavior : MonoBehaviour, IBeginDragHandler, IDragHandler
 
     private void CheckMovement()
     {
-        float returnal = speed.magnitude;
-        SlimeLogic.Instance.increaseHumidity(returnal);
+
     }
 }
