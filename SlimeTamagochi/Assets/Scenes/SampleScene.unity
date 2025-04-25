@@ -599,11 +599,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 154813628f3d38744ae32bd28746b956, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ph: 0
-  humidity: 0
-  hunger: 0
-  energy: 0
-  secondsToDie: 0
   PH_DANGER_LOW: 0
   PH_DANGER_HIGH: 0
   HUMIDITY_DANGER_LOW: 0
@@ -618,6 +613,30 @@ MonoBehaviour:
   humidityOmeostasis: 0
   hungerOmeostasis: 0
   energyOmeostasis: 0
+--- !u!114 &260667386
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 260667379}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7256821b69fb2e34c8c80d410aa31a14, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &260667387
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 260667379}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 619a8e2733ffcd64d963a0fe0c7d593d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &280847878
 GameObject:
   m_ObjectHideFlags: 0
@@ -2325,6 +2344,14 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 260667385}
+    - targetCorrespondingSourceObject: {fileID: 8256917960605889880, guid: b4856c07ebdfe0349b342b0aa743d0c0,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 260667387}
+    - targetCorrespondingSourceObject: {fileID: 8256917960605889880, guid: b4856c07ebdfe0349b342b0aa743d0c0,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 260667386}
     - targetCorrespondingSourceObject: {fileID: 1267698680211967077, guid: b4856c07ebdfe0349b342b0aa743d0c0,
         type: 3}
       insertIndex: -1
