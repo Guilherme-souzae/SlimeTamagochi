@@ -1,3 +1,4 @@
+using System;
 using System.IO;
 using UnityEngine;
 
@@ -12,23 +13,21 @@ public class SlimeFileManagement : MonoBehaviour
 
     private void OnApplicationQuit()
     {
-        JsonHolder jsonHolder = new JsonHolder();
-        jsonHolder.stats = SlimeLogic.Instance.GetStats();
-        Salvar(jsonHolder);
+        Salvar();
     }
 
     private void OnApplicationPause()
     {
-        JsonHolder jsonHolder = new JsonHolder();
-        jsonHolder.stats = SlimeLogic.Instance.GetStats();
-        Salvar(jsonHolder);
+        Salvar();
     }
 
-    private static void Salvar(JsonHolder data)
+    private static void Salvar()
     {
-        SlimeStats stats = SlimeLogic.Instance.GetStats();
+        JsonHolder buffer = new JsonHolder();
+        buffer.stats = SlimeLogic.Instance.GetStats();
+        buffer.lastTime = DateTime.Now;
 
-        string json = JsonUtility.ToJson(data);
+        string json = JsonUtility.ToJson(buffer);
         File.WriteAllText(Caminho, json);
     }
 
@@ -40,6 +39,7 @@ public class SlimeFileManagement : MonoBehaviour
             JsonHolder buffer = JsonUtility.FromJson<JsonHolder>(json);
             
             SlimeLogic.Instance.SetStats(buffer.stats);
+            SlimeTimers.Instance.PassiveStatsUpdate(buffer.lastTime);
         }
     }
 }

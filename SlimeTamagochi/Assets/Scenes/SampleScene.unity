@@ -625,6 +625,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7256821b69fb2e34c8c80d410aa31a14, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PH_CHANGE_RATE: 0
+  HUMIDITY_CHANGE_RATE: 0
+  HUNGER_CHANGE_RATE: 0
+  ENERGY_CHANGE_RATE: 0
+  PH_CHANGE_TIME: 1
+  HUMIDITY_CHANGE_TIME: 1
+  HUNGER_CHANGE_TIME: 1
+  ENERGY_CHANGE_TIME: 1
 --- !u!114 &260667387
 MonoBehaviour:
   m_ObjectHideFlags: 0

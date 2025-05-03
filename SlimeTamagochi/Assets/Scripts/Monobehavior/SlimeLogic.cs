@@ -37,10 +37,11 @@ public class SlimeLogic : MonoBehaviour
     // Increase functions
     public void IncreasePh(int x)
     {
-        if (stats.ph + x >=0 && stats.ph + x <= 100)
+        if (stats.ph + x >= 0 && stats.ph + x <= 100)
         {
             stats.ph += x;
         }
+        checkOmeostasis();
     }
 
     public void IncreaseHumidity(int x)
@@ -49,6 +50,8 @@ public class SlimeLogic : MonoBehaviour
         {
             stats.humidity += x;
         }
+
+        checkOmeostasis();
     }
 
     public void IncreaseHunger(int x)
@@ -57,6 +60,8 @@ public class SlimeLogic : MonoBehaviour
         {
             stats.hunger += x;
         }
+
+        checkOmeostasis();
     }
 
     public void IncreaseEnergy(int x)
@@ -65,6 +70,8 @@ public class SlimeLogic : MonoBehaviour
         {
             stats.energy += x;
         }
+
+        checkOmeostasis();
     }
 
     // Check state function
