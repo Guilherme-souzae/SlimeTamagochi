@@ -41,6 +41,10 @@ public class SlimeLogic : MonoBehaviour
         {
             stats.ph += x;
         }
+        else
+        {
+            stats.ph = (stats.ph + x < 0) ? 0 : 100;
+        }
         checkOmeostasis();
     }
 
@@ -50,7 +54,10 @@ public class SlimeLogic : MonoBehaviour
         {
             stats.humidity += x;
         }
-
+        else
+        {
+            stats.humidity = (stats.humidity + x < 0) ? 0 : 100;
+        }
         checkOmeostasis();
     }
 
@@ -60,7 +67,10 @@ public class SlimeLogic : MonoBehaviour
         {
             stats.hunger += x;
         }
-
+        else
+        {
+            stats.hunger = (stats.hunger + x < 0) ? 0 : 100;
+        }
         checkOmeostasis();
     }
 
@@ -70,7 +80,10 @@ public class SlimeLogic : MonoBehaviour
         {
             stats.energy += x;
         }
-
+        else
+        {
+            stats.energy = (stats.energy + x < 0) ? 0 : 100;
+        }
         checkOmeostasis();
     }
 
@@ -83,6 +96,8 @@ public class SlimeLogic : MonoBehaviour
         energyOmeostasis = (stats.energy <= ENERGY_DANGER_LOW || stats.energy >= ENERGY_DANGER_HIGH) ? false : true;
 
         generalOmeostasis = phOmeostasis && humidityOmeostasis && hungerOmeostasis && energyOmeostasis;
+
+        ShowDebug(); // A função é chamada sempre que o estado do slime é atualizado
     }
 
     // Get and Set stats functions
@@ -94,5 +109,15 @@ public class SlimeLogic : MonoBehaviour
     public void SetStats(SlimeStats newStats)
     {
         stats = newStats;
+    }
+
+    // Debug Function
+    private void ShowDebug()
+    {
+        Debug.Log("ESTADO DO SLIME ATUALIZADO");
+        Debug.Log("PH: " + stats.ph);
+        Debug.Log("Humidity: " + stats.humidity);
+        Debug.Log("Hunger: " + stats.hunger);
+        Debug.Log("Energy: " + stats.energy);
     }
 }
