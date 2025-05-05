@@ -13,7 +13,7 @@ public class UIManager : MonoBehaviour
     [Header("Dependências Umidade")]
     public GameObject humidityMinigamePanel;
     public Button humidityActivateButton;
-    public SlimeSlimeBehavior slimeSlimeBehavior;
+    public HumidityMinigameBehavior slimeSlimeBehavior;
 
     [Header("Dependências Inventário")]
     public Button eatingActivateButton;

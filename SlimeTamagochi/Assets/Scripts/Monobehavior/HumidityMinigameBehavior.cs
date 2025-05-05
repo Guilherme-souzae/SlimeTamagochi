@@ -4,7 +4,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class SlimeSlimeBehavior : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
+public class HumidityMinigameBehavior : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
     [Header("Configurações do minigame")]
     public float clickHumidityRate = 0.1f;
