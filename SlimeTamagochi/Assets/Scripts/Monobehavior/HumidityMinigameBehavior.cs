@@ -10,6 +10,8 @@ public class HumidityMinigameBehavior : MonoBehaviour, IBeginDragHandler, IDragH
     public float clickHumidityRate = 0.1f;
     public float minigameDuration = 5f;
     public float returnalStep = 0.2f;
+    public float maxSpeedCap = 100f;
+    [Range(0,100)] public int maxReturnal = 10;
 
     [Header("Configurações da física")]
     public float dragSmoothness = 10f;
@@ -109,6 +111,11 @@ public class HumidityMinigameBehavior : MonoBehaviour, IBeginDragHandler, IDragH
 
     private void CheckMovement()
     {
+        float absSpeed = speed.magnitude;
+        float normalized = Mathf.Clamp01(absSpeed / maxSpeedCap);
+        int returnal = Mathf.RoundToInt(normalized * maxReturnal);
 
+        Debug.Log("Movimento detectado: " + returnal);
     }
+
 }
