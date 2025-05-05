@@ -5,8 +5,12 @@ using UnityEngine;
 using UnityEngine.UI;
 public class PhSliderBehavior : MonoBehaviour
 {
-    public Slider phSlider;
+    [Header("Configurações do minigame")]
+    [Range(-100, -1)] public int minValue = -50;
+    [Range(1, 100)] public int maxValue = 50;
     public float speed = 0.5f;
+
+    public Slider phSlider;
     private bool running = false;
     private bool increase = true;
 
@@ -51,5 +55,14 @@ public class PhSliderBehavior : MonoBehaviour
                 }
             }
         }
+    }
+
+    public void updateSlimeTroughtMinigame()
+    {
+        float buffer = phSlider.value;
+        buffer = minValue + (buffer * (maxValue - minValue));
+        int final = Mathf.RoundToInt(buffer);
+        
+        SlimeLogic.Instance.IncreasePh(final);
     }
 }

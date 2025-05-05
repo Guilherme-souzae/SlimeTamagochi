@@ -15,7 +15,7 @@ public class UIManager : MonoBehaviour
     public Button humidityActivateButton;
     public HumidityMinigameBehavior slimeSlimeBehavior;
 
-    [Header("Dependências Inventário")]
+    [Header("Dependências Fome")]
     public Button eatingActivateButton;
 
     private void Start()
@@ -31,7 +31,11 @@ public class UIManager : MonoBehaviour
 
     private void Update()
     {
-        if (phMinigamePanel != null && phMinigamePanel.activeInHierarchy && Input.GetMouseButtonDown(0)) HidePhMinigame();
+        if (phMinigamePanel != null && phMinigamePanel.activeInHierarchy && Input.GetMouseButtonDown(0))
+        {
+            phSliderBehavior.updateSlimeTroughtMinigame();
+            HidePhMinigame();
+        }
     }
 
     // Ph Minigame

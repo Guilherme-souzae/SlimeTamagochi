@@ -633,7 +633,7 @@ MonoBehaviour:
   HUMIDITY_CHANGE_TIME: 1
   HUNGER_CHANGE_TIME: 1
   ENERGY_CHANGE_TIME: 1
-  TIME_DIVISOR: 1
+  TIME_DIVISOR: 60
 --- !u!1 &280847878
 GameObject:
   m_ObjectHideFlags: 0
