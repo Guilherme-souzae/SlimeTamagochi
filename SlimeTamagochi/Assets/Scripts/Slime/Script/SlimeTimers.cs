@@ -11,8 +11,8 @@ public class SlimeTimers : MonoBehaviour
     [Header("Taxas de variação:")]
     [Range(-100, 100)] public int PH_CHANGE_RATE;
     [Range(-100, 100)] public int HUMIDITY_CHANGE_RATE;
-    [Range(-100, 100)] public int HUNGER_CHANGE_RATE;
-    [Range(-100, 100)] public int ENERGY_CHANGE_RATE;
+    [Range(-100, -1)] public int HUNGER_CHANGE_RATE;
+    [Range(-100, -1)] public int ENERGY_CHANGE_RATE;
 
     [Header("Tempos de variação em minutos:")]
     [Range(1, 60)] public int PH_CHANGE_TIME;
@@ -54,7 +54,7 @@ public class SlimeTimers : MonoBehaviour
         {
             yield return new WaitForSeconds(PH_CHANGE_TIME * TIME_DIVISOR);
             Debug.Log("Atualizando PH");
-            SlimeLogic.Instance.IncreasePh(PH_CHANGE_RATE);
+            SlimeValues.Instance.IncreasePh(PH_CHANGE_RATE);
         }
     }
 
@@ -64,7 +64,7 @@ public class SlimeTimers : MonoBehaviour
         {
             yield return new WaitForSeconds(HUMIDITY_CHANGE_TIME * TIME_DIVISOR);
             Debug.Log("Atualizando umidade");
-            SlimeLogic.Instance.IncreaseHumidity(HUMIDITY_CHANGE_RATE);
+            SlimeValues.Instance.IncreaseHumidity(HUMIDITY_CHANGE_RATE);
         }
     }
 
@@ -74,7 +74,7 @@ public class SlimeTimers : MonoBehaviour
         {
             yield return new WaitForSeconds(HUNGER_CHANGE_TIME * TIME_DIVISOR);
             Debug.Log("Atualizando fome");
-            SlimeLogic.Instance.IncreaseHunger(HUNGER_CHANGE_RATE);
+            SlimeValues.Instance.IncreaseHunger(HUNGER_CHANGE_RATE);
         }
     }
 
@@ -84,7 +84,8 @@ public class SlimeTimers : MonoBehaviour
         {
             yield return new WaitForSeconds(ENERGY_CHANGE_TIME * TIME_DIVISOR);
             Debug.Log("Atualizando energia");
-            SlimeLogic.Instance.IncreaseEnergy(ENERGY_CHANGE_RATE);
+            int increment = (SlimeBehavior.Instance.GetSleeping()) ? Mathf.Abs(ENERGY_CHANGE_RATE) : ENERGY_CHANGE_RATE; // Sleep state verify
+            SlimeValues.Instance.IncreaseEnergy(increment);
         }
     }
 
@@ -99,12 +100,14 @@ public class SlimeTimers : MonoBehaviour
         int hungerChange = deltaTimeMinutes * HUNGER_CHANGE_RATE / HUNGER_CHANGE_TIME;
         int energyChange = deltaTimeMinutes * ENERGY_CHANGE_RATE / ENERGY_CHANGE_TIME;
 
-        SlimeStats stats = new SlimeStats(buffer.stats[0], buffer.stats[1], buffer.stats[2], buffer.stats[3]);
-        SlimeLogic.Instance.SetStats(stats);
+        energyChange = (buffer.isSleeping) ? Mathf.Abs(energyChange) : energyChange; // sleeping
 
-        SlimeLogic.Instance.IncreasePh(phChange);
-        SlimeLogic.Instance.IncreaseHumidity(humidityChange);
-        SlimeLogic.Instance.IncreaseHunger(hungerChange);
-        SlimeLogic.Instance.IncreaseEnergy(energyChange);
+        SlimeStats stats = new SlimeStats(buffer.stats[0], buffer.stats[1], buffer.stats[2], buffer.stats[3]);
+        SlimeValues.Instance.SetStats(stats);
+
+        SlimeValues.Instance.IncreasePh(phChange);
+        SlimeValues.Instance.IncreaseHumidity(humidityChange);
+        SlimeValues.Instance.IncreaseHunger(hungerChange);
+        SlimeValues.Instance.IncreaseEnergy(energyChange);
     }
 }

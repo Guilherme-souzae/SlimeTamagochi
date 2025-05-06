@@ -12,9 +12,9 @@ public enum BehaviorState
     CYST
 }
 
-public class SlimeMovement : MonoBehaviour
+public class SlimeBehavior : MonoBehaviour
 {
-    public static SlimeMovement Instance; // Singleton
+    public static SlimeBehavior Instance; // Singleton
 
     [Header("Dependências do cenário")]
     public GameObject plate;
@@ -31,7 +31,7 @@ public class SlimeMovement : MonoBehaviour
 
     [Header("Estado do slime")]
     private BehaviorState state;
-    private bool grounded = false;
+    private bool grounded;
 
     private Rigidbody rb;
 
@@ -40,11 +40,23 @@ public class SlimeMovement : MonoBehaviour
     private void Awake()
     {
         Instance = this;
+        grounded = true;
         rb = GetComponent<Rigidbody>();
     }
 
     private void Start()
     {
+        DataHolder buffer = SaveSystem.LoadSlime();
+        if (buffer != null)
+        {
+            if (buffer.isSleeping)
+            {
+                state = BehaviorState.SLEEPING;
+                Vector3 bedPosition = bed.transform.position;
+                bedPosition.y += 1f;
+                transform.position = bedPosition;
+            }
+        }
         Decide();
     }
 
@@ -127,5 +139,12 @@ public class SlimeMovement : MonoBehaviour
     private void OnCollisionExit(Collision collision)
     {
         grounded = false;
+    }
+
+    // Auxiliary
+
+    public bool GetSleeping()
+    {
+        return (state == BehaviorState.SLEEPING) ? true : false;
     }
 }

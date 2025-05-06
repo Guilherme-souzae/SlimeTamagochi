@@ -629,13 +629,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PH_CHANGE_RATE: 7
   HUMIDITY_CHANGE_RATE: 2
-  HUNGER_CHANGE_RATE: 5
-  ENERGY_CHANGE_RATE: 4
+  HUNGER_CHANGE_RATE: -1
+  ENERGY_CHANGE_RATE: -6
   PH_CHANGE_TIME: 1
   HUMIDITY_CHANGE_TIME: 1
   HUNGER_CHANGE_TIME: 1
   ENERGY_CHANGE_TIME: 1
-  TIME_DIVISOR: 60
+  TIME_DIVISOR: 1
 --- !u!1 &268296656
 GameObject:
   m_ObjectHideFlags: 0
@@ -2286,6 +2286,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: BaseSlime
+      objectReference: {fileID: 0}
+    - target: {fileID: 8256917960605889880, guid: b4856c07ebdfe0349b342b0aa743d0c0,
+        type: 3}
+      propertyPath: m_TagString
+      value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 8781359084416053218, guid: b4856c07ebdfe0349b342b0aa743d0c0,
         type: 3}

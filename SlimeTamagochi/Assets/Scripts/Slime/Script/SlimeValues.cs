@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-public class SlimeLogic : MonoBehaviour
+public class SlimeValues : MonoBehaviour
 {
     [Header("Danger Values:")]
     [Header("PH")]
@@ -25,7 +25,7 @@ public class SlimeLogic : MonoBehaviour
     public bool hungerOmeostasis;
     public bool energyOmeostasis;
 
-    public static SlimeLogic Instance;
+    public static SlimeValues Instance;
 
     public SlimeStats stats;
 

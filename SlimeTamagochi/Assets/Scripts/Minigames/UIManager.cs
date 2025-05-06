@@ -86,11 +86,11 @@ public class UIManager : MonoBehaviour
 
     private void GoEat()
     {
-        SlimeMovement.Instance.UpdateState(BehaviorState.GOING_TO_EAT);
+        SlimeBehavior.Instance.UpdateState(BehaviorState.GOING_TO_EAT);
     }
 
     private void GoSleep()
     {
-        SlimeMovement.Instance.UpdateState(BehaviorState.GOING_TO_SLEEP);
+        SlimeBehavior.Instance.UpdateState(BehaviorState.GOING_TO_SLEEP);
     }
 }

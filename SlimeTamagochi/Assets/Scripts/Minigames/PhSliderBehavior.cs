@@ -62,7 +62,7 @@ public class PhSliderBehavior : MonoBehaviour
         float buffer = phSlider.value;
         buffer = minValue + (buffer * (maxValue - minValue));
         int final = Mathf.RoundToInt(buffer);
-        
-        SlimeLogic.Instance.IncreasePh(final);
+
+        SlimeValues.Instance.IncreasePh(final);
     }
 }

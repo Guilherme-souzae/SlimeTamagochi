@@ -1,19 +1,22 @@
 
 using System;
+using UnityEngine;
 
 [System.Serializable]
 public class DataHolder
 {
     public int lastTime;
+    public bool isSleeping;
     public int[] stats;
 
     public DataHolder()
     {
         lastTime = (int)DateTimeOffset.UtcNow.ToUnixTimeSeconds();
+        isSleeping = (SlimeBehavior.Instance.GetSleeping()) ? true : false;
         stats = new int[4];
-        stats[0] = SlimeLogic.Instance.stats.ph;
-        stats[1] = SlimeLogic.Instance.stats.humidity;
-        stats[2] = SlimeLogic.Instance.stats.hunger;
-        stats[3] = SlimeLogic.Instance.stats.energy;
+        stats[0] = SlimeValues.Instance.stats.ph;
+        stats[1] = SlimeValues.Instance.stats.humidity;
+        stats[2] = SlimeValues.Instance.stats.hunger;
+        stats[3] = SlimeValues.Instance.stats.energy;
     }
 }
