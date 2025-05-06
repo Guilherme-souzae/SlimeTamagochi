@@ -51,13 +51,20 @@ public class SlimeBehavior : MonoBehaviour
         {
             if (buffer.isSleeping)
             {
-                state = BehaviorState.SLEEPING;
                 Vector3 bedPosition = bed.transform.position;
-                bedPosition.y += 1f;
+                bedPosition.y += 1.2f;
                 transform.position = bedPosition;
+                UpdateState(BehaviorState.SLEEPING);
+            }
+            else
+            {
+                UpdateState(BehaviorState.IDLE);
             }
         }
-        Decide();
+        else
+        {
+            UpdateState(BehaviorState.IDLE);
+        }
     }
 
     // State Logic
