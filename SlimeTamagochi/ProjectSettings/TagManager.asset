@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Plate
   - Ground
+  - Bed
   layers:
   - Default
   - TransparentFX

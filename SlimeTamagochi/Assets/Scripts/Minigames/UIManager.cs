@@ -18,9 +18,13 @@ public class UIManager : MonoBehaviour
     [Header("Dependências Fome")]
     public Button eatingActivateButton;
 
+    [Header("Dependências Energia")]
+    public Button energyActivateButton;
+
     private void Start()
     {
         eatingActivateButton.onClick.AddListener(GoEat);
+        energyActivateButton.onClick.AddListener(GoSleep);
 
         phMinigameActivateButton.onClick.AddListener(ShowPhMinigame);
         if (phMinigamePanel != null) phMinigamePanel.SetActive(false);
@@ -82,6 +86,11 @@ public class UIManager : MonoBehaviour
 
     private void GoEat()
     {
-        SlimeMovement.Instance.EatingRoutine();
+        SlimeMovement.Instance.UpdateState(BehaviorState.GOING_TO_EAT);
+    }
+
+    private void GoSleep()
+    {
+        SlimeMovement.Instance.UpdateState(BehaviorState.GOING_TO_SLEEP);
     }
 }
