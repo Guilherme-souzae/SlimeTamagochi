@@ -87,6 +87,16 @@ public class SlimeValues : MonoBehaviour
         checkOmeostasis();
     }
 
+    public void Consume(ItemData meal)
+    {
+        if (meal == null) return;
+
+        IncreasePh(meal.ph);
+        IncreaseHumidity(meal.humidity);
+        IncreaseHunger(meal.hunger);
+        IncreaseEnergy(meal.energy);
+    }
+
     // Check state function
     private void checkOmeostasis()
     {

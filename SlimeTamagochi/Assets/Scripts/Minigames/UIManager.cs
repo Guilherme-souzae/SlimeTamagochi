@@ -16,6 +16,7 @@ public class UIManager : MonoBehaviour
     public HumidityMinigameBehavior slimeSlimeBehavior;
 
     [Header("Dependências Fome")]
+    public ItemData meal;
     public Button eatingActivateButton;
 
     [Header("Dependências Energia")]
@@ -86,6 +87,7 @@ public class UIManager : MonoBehaviour
 
     private void GoEat()
     {
+        PlateScript.Instance.SetMeal(meal);
         SlimeBehavior.Instance.UpdateState(BehaviorState.GOING_TO_EAT);
     }
 
