@@ -581,7 +581,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minValue: -50
   maxValue: 50
-  speed: 0.5
+  speed: 3
   phSlider: {fileID: 194117073}
 --- !u!1 &260667379 stripped
 GameObject:
@@ -1037,7 +1037,7 @@ MonoBehaviour:
   humidityMinigamePanel: {fileID: 1576610957}
   humidityActivateButton: {fileID: 1019110247}
   slimeSlimeBehavior: {fileID: 280847883}
-  meal: {fileID: 11400000, guid: ab9b04d90ffd94a4b8f843375adbc9d7, type: 2}
+  restaurant: {fileID: 11400000, guid: db3b2cbc3dae0104a91994a35ff73fb1, type: 2}
   eatingActivateButton: {fileID: 1785963756}
   energyActivateButton: {fileID: 268296658}
 --- !u!114 &498985022

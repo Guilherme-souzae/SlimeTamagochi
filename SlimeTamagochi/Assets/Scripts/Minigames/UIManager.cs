@@ -5,21 +5,21 @@ using UnityEngine;
 
 public class UIManager : MonoBehaviour
 {
-    [Header("Dependências PH")]
+    [Header("Dependï¿½ncias PH")]
     public GameObject phMinigamePanel;
     public Button phMinigameActivateButton;
     public PhSliderBehavior phSliderBehavior;
 
-    [Header("Dependências Umidade")]
+    [Header("Dependï¿½ncias Umidade")]
     public GameObject humidityMinigamePanel;
     public Button humidityActivateButton;
     public HumidityMinigameBehavior slimeSlimeBehavior;
 
-    [Header("Dependências Fome")]
-    public ItemData meal;
+    [Header("Dependï¿½ncias Fome")] 
+    public ItemShop restaurant;
     public Button eatingActivateButton;
 
-    [Header("Dependências Energia")]
+    [Header("Dependï¿½ncias Energia")]
     public Button energyActivateButton;
 
     private void Start()
@@ -76,6 +76,7 @@ public class UIManager : MonoBehaviour
         phMinigameActivateButton.gameObject.SetActive(false);
         humidityActivateButton.gameObject.SetActive(false);
         eatingActivateButton.gameObject.SetActive(false);
+        energyActivateButton.gameObject.SetActive(false);
     }
 
     private void ShowButtons()
@@ -83,10 +84,12 @@ public class UIManager : MonoBehaviour
         phMinigameActivateButton.gameObject.SetActive(true);
         humidityActivateButton.gameObject.SetActive(true);
         eatingActivateButton.gameObject.SetActive(true);
+        energyActivateButton.gameObject.SetActive(true);
     }
 
     private void GoEat()
     {
+        ItemData meal = restaurant.CallTheWaiter();
         PlateScript.Instance.SetMeal(meal);
         SlimeBehavior.Instance.UpdateState(BehaviorState.GOING_TO_EAT);
     }
