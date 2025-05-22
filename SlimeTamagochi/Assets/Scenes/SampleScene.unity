@@ -628,9 +628,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PH_CHANGE_RATE: 7
-  HUMIDITY_CHANGE_RATE: 2
+  HUMIDITY_CHANGE_RATE: -15
   HUNGER_CHANGE_RATE: -1
-  ENERGY_CHANGE_RATE: -6
+  ENERGY_CHANGE_RATE: -1
   PH_CHANGE_TIME: 1
   HUMIDITY_CHANGE_TIME: 1
   HUNGER_CHANGE_TIME: 1
@@ -876,7 +876,7 @@ MonoBehaviour:
   eatingTime: 60
   jumpForce: 50
   jumpInterval: 5
-  moveForce: 2.5
+  moveForce: 10
   jumpChance: 100
 --- !u!1 &308022799
 GameObject:
@@ -1036,7 +1036,7 @@ MonoBehaviour:
   phSliderBehavior: {fileID: 194117074}
   humidityMinigamePanel: {fileID: 1576610957}
   humidityActivateButton: {fileID: 1019110247}
-  slimeSlimeBehavior: {fileID: 280847883}
+  humidityMinigameBehavior: {fileID: 0}
   restaurant: {fileID: 11400000, guid: db3b2cbc3dae0104a91994a35ff73fb1, type: 2}
   eatingActivateButton: {fileID: 1785963756}
   energyActivateButton: {fileID: 268296658}

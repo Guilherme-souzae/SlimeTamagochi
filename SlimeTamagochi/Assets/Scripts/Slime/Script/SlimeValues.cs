@@ -1,23 +1,23 @@
-using System.Collections;
 using UnityEngine;
+
+public enum ValueState
+{
+    IDLE,
+    SLEEPING,
+    CYST
+}
 
 public class SlimeValues : MonoBehaviour
 {
-    [Header("Danger Values:")]
-    [Header("PH")]
-    [Range(0, 100)] public int PH_DANGER_LOW;
-    [Range(0, 100)] public int PH_DANGER_HIGH;
-    [Header("Humidity")]
-    [Range(0, 100)] public int HUMIDITY_DANGER_LOW;
-    [Range(0, 100)] public int HUMIDITY_DANGER_HIGH;
-    [Header("Hunger")]
-    [Range(0, 100)] public int HUNGER_DANGER_LOW;
-    [Range(0, 100)] public int HUNGER_DANGER_HIGH;
-    [Header("Energy")]
-    [Range(0, 100)] public int ENERGY_DANGER_LOW;
-    [Range(0, 100)] public int ENERGY_DANGER_HIGH;
+    public static SlimeValues Instance;
 
-    [Header("Flags de omeostase")]
+    [Header("Limites perigosos")]
+    [Range(0, 100)] public int PH_DANGER_LOW, PH_DANGER_HIGH;
+    [Range(0, 100)] public int HUMIDITY_DANGER_LOW, HUMIDITY_DANGER_HIGH;
+    [Range(0, 100)] public int HUNGER_DANGER_LOW, HUNGER_DANGER_HIGH;
+    [Range(0, 100)] public int ENERGY_DANGER_LOW, ENERGY_DANGER_HIGH;
+
+    [Header("Estado de homeostase")]
     public bool generalOmeostasis;
     public bool isInCystForm;
     public bool phOmeostasis;
@@ -25,65 +25,48 @@ public class SlimeValues : MonoBehaviour
     public bool hungerOmeostasis;
     public bool energyOmeostasis;
 
-    public static SlimeValues Instance;
-
     public SlimeStats stats;
+    private ValueState state;
 
-    private void Awake()
+    private void Awake() => Instance = this;
+
+    public void SetState(ValueState newState)
     {
-        Instance = this;
+        if (newState != state)
+        {
+            state = newState;
+        }
     }
 
-    // Increase functions
+    private int ClampStat(int value) => Mathf.Clamp(value, 0, 100);
+
     public void IncreasePh(int x)
     {
-        if (stats.ph + x >= 0 && stats.ph + x <= 100)
-        {
-            stats.ph += x;
-        }
-        else
-        {
-            stats.ph = (stats.ph + x < 0) ? 0 : 100;
-        }
+        if (state == ValueState.CYST) return;
+        stats.ph = ClampStat(stats.ph + x);
         checkOmeostasis();
     }
 
     public void IncreaseHumidity(int x)
     {
-        if (stats.humidity + x >= 0 && stats.humidity + x <= 100)
-        {
-            stats.humidity += x;
-        }
-        else
-        {
-            stats.humidity = (stats.humidity + x < 0) ? 0 : 100;
-        }
+        if (state == ValueState.CYST) return;
+        stats.humidity = ClampStat(stats.humidity + x);
         checkOmeostasis();
     }
 
     public void IncreaseHunger(int x)
     {
-        if (stats.hunger + x >= 0 && stats.hunger + x <= 100)
-        {
-            stats.hunger += x;
-        }
-        else
-        {
-            stats.hunger = (stats.hunger + x < 0) ? 0 : 100;
-        }
+        if (state == ValueState.CYST) return;
+        stats.hunger = ClampStat(stats.hunger + x);
         checkOmeostasis();
     }
 
     public void IncreaseEnergy(int x)
     {
-        if (stats.energy + x >= 0 && stats.energy + x <= 100)
-        {
-            stats.energy += x;
-        }
-        else
-        {
-            stats.energy = (stats.energy + x < 0) ? 0 : 100;
-        }
+        if (state == ValueState.CYST) return;
+
+        int delta = (state == ValueState.SLEEPING) ? -x : x;
+        stats.energy = ClampStat(stats.energy + delta);
         checkOmeostasis();
     }
 
@@ -97,37 +80,23 @@ public class SlimeValues : MonoBehaviour
         IncreaseEnergy(meal.energy);
     }
 
-    // Check state function
     private void checkOmeostasis()
     {
-        phOmeostasis = (stats.ph <= PH_DANGER_LOW || stats.ph >= PH_DANGER_HIGH) ? false : true;
-        humidityOmeostasis = (stats.humidity <= HUMIDITY_DANGER_LOW || stats.humidity >= HUMIDITY_DANGER_HIGH) ? false : true;
-        hungerOmeostasis = (stats.hunger <= HUNGER_DANGER_LOW || stats.hunger >= HUNGER_DANGER_HIGH) ? false : true;
-        energyOmeostasis = (stats.energy <= ENERGY_DANGER_LOW || stats.energy >= ENERGY_DANGER_HIGH) ? false : true;
+        phOmeostasis = !(stats.ph <= PH_DANGER_LOW || stats.ph >= PH_DANGER_HIGH);
+        humidityOmeostasis = !(stats.humidity <= HUMIDITY_DANGER_LOW || stats.humidity >= HUMIDITY_DANGER_HIGH);
+        hungerOmeostasis = !(stats.hunger <= HUNGER_DANGER_LOW || stats.hunger >= HUNGER_DANGER_HIGH);
+        energyOmeostasis = !(stats.energy <= ENERGY_DANGER_LOW || stats.energy >= ENERGY_DANGER_HIGH);
 
         generalOmeostasis = phOmeostasis && humidityOmeostasis && hungerOmeostasis && energyOmeostasis;
 
-        ShowDebug(); // A função é chamada sempre que o estado do slime é atualizado
+        ShowDebug();
     }
 
-    // Get and Set stats functions
-    public SlimeStats GetStats()
-    {
-        return stats;
-    }
+    public SlimeStats GetStats() => stats;
+    public void SetStats(SlimeStats newStats) => stats = newStats;
 
-    public void SetStats(SlimeStats newStats)
-    {
-        stats = newStats;
-    }
-
-    // Debug Function
     private void ShowDebug()
     {
-        Debug.Log("ESTADO DO SLIME ATUALIZADO");
-        Debug.Log("PH: " + stats.ph);
-        Debug.Log("Humidity: " + stats.humidity);
-        Debug.Log("Hunger: " + stats.hunger);
-        Debug.Log("Energy: " + stats.energy);
+        Debug.Log($"ESTADO DO SLIME ATUALIZADO\nPH: {stats.ph}, Humidity: {stats.humidity}, Hunger: {stats.hunger}, Energy: {stats.energy}");
     }
 }

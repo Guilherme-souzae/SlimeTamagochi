@@ -1,36 +1,35 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine.UI;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
-    [Header("Depend�ncias PH")]
+    [Header("Dependências - PH")]
     public GameObject phMinigamePanel;
     public Button phMinigameActivateButton;
     public PhSliderBehavior phSliderBehavior;
 
-    [Header("Depend�ncias Umidade")]
+    [Header("Dependências - Umidade")]
     public GameObject humidityMinigamePanel;
     public Button humidityActivateButton;
-    public HumidityMinigameBehavior slimeSlimeBehavior;
+    public HumidityMinigameBehavior humidityMinigameBehavior;
 
-    [Header("Depend�ncias Fome")] 
+    [Header("Dependências - Fome")]
     public ItemShop restaurant;
     public Button eatingActivateButton;
 
-    [Header("Depend�ncias Energia")]
+    [Header("Dependências - Energia")]
     public Button energyActivateButton;
 
     private void Start()
     {
-        eatingActivateButton.onClick.AddListener(GoEat);
-        energyActivateButton.onClick.AddListener(GoSleep);
+        // Ligações dos botões com os métodos
+        eatingActivateButton?.onClick.AddListener(GoEat);
+        energyActivateButton?.onClick.AddListener(GoSleep);
 
-        phMinigameActivateButton.onClick.AddListener(ShowPhMinigame);
+        phMinigameActivateButton?.onClick.AddListener(ShowPhMinigame);
         if (phMinigamePanel != null) phMinigamePanel.SetActive(false);
 
-        humidityActivateButton.onClick.AddListener(ShowHumidityMinigame);
+        humidityActivateButton?.onClick.AddListener(ShowHumidityMinigame);
         if (humidityMinigamePanel != null) humidityMinigamePanel.SetActive(false);
     }
 
@@ -38,67 +37,79 @@ public class UIManager : MonoBehaviour
     {
         if (phMinigamePanel != null && phMinigamePanel.activeInHierarchy && Input.GetMouseButtonDown(0))
         {
-            phSliderBehavior.updateSlimeTroughtMinigame();
+            phSliderBehavior?.updateSlimeTroughtMinigame();
             HidePhMinigame();
         }
     }
 
-    // Ph Minigame
+    // -------------------------------
+    // PH Minigame
     private void ShowPhMinigame()
     {
         HideButtons();
-        phMinigamePanel.SetActive(true);
+        if (phMinigamePanel != null) phMinigamePanel.SetActive(true);
     }
 
     private void HidePhMinigame()
     {
+        if (phMinigamePanel != null) phMinigamePanel.SetActive(false);
         ShowButtons();
-        phMinigamePanel.SetActive(false);
     }
 
+    // -------------------------------
     // Humidity Minigame
     public void ShowHumidityMinigame()
     {
+        if (humidityMinigamePanel == null || humidityMinigameBehavior == null) return;
+
         HideButtons();
         humidityMinigamePanel.SetActive(true);
-        Invoke("HideHumidityMinigame", slimeSlimeBehavior.minigameDuration);
+        Invoke(nameof(HideHumidityMinigame), humidityMinigameBehavior.minigameDuration);
     }
 
     private void HideHumidityMinigame()
     {
+        if (humidityMinigamePanel != null) humidityMinigamePanel.SetActive(false);
         ShowButtons();
-        humidityMinigamePanel.SetActive(false);
     }
 
-    // Utils
+    // -------------------------------
+    // Utilidades da interface
     private void HideButtons()
     {
-        phMinigameActivateButton.gameObject.SetActive(false);
-        humidityActivateButton.gameObject.SetActive(false);
-        eatingActivateButton.gameObject.SetActive(false);
-        energyActivateButton.gameObject.SetActive(false);
+        phMinigameActivateButton?.gameObject.SetActive(false);
+        humidityActivateButton?.gameObject.SetActive(false);
+        eatingActivateButton?.gameObject.SetActive(false);
+        energyActivateButton?.gameObject.SetActive(false);
     }
 
     private void ShowButtons()
     {
-        phMinigameActivateButton.gameObject.SetActive(true);
-        humidityActivateButton.gameObject.SetActive(true);
-        eatingActivateButton.gameObject.SetActive(true);
-        energyActivateButton.gameObject.SetActive(true);
+        phMinigameActivateButton?.gameObject.SetActive(true);
+        humidityActivateButton?.gameObject.SetActive(true);
+        eatingActivateButton?.gameObject.SetActive(true);
+        energyActivateButton?.gameObject.SetActive(true);
     }
 
+    // -------------------------------
+    // Ações principais
     private void GoEat()
     {
+        if (PlateScript.Instance == null || SlimeBehavior.Instance == null || restaurant == null) return;
+
         if (PlateScript.Instance.IsEmpty())
         {
             ItemData meal = restaurant.CallTheWaiter();
             PlateScript.Instance.SetMeal(meal);
-            SlimeBehavior.Instance.UpdateState(BehaviorState.GOING_TO_EAT);
+            SlimeBehavior.Instance.SetState(BehaviorState.GOING_TO_EAT);
         }
     }
 
     private void GoSleep()
     {
-        SlimeBehavior.Instance.UpdateState(BehaviorState.GOING_TO_SLEEP);
+        if (SlimeBehavior.Instance != null)
+        {
+            SlimeBehavior.Instance.SetState(BehaviorState.GOING_TO_SLEEP);
+        }
     }
 }
