@@ -89,9 +89,12 @@ public class UIManager : MonoBehaviour
 
     private void GoEat()
     {
-        ItemData meal = restaurant.CallTheWaiter();
-        PlateScript.Instance.SetMeal(meal);
-        SlimeBehavior.Instance.UpdateState(BehaviorState.GOING_TO_EAT);
+        if (PlateScript.Instance.IsEmpty())
+        {
+            ItemData meal = restaurant.CallTheWaiter();
+            PlateScript.Instance.SetMeal(meal);
+            SlimeBehavior.Instance.UpdateState(BehaviorState.GOING_TO_EAT);
+        }
     }
 
     private void GoSleep()

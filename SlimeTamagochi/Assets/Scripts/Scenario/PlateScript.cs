@@ -26,4 +26,10 @@ public class PlateScript : MonoBehaviour
     {
         mealSprite.enabled = flag;
     }
+
+    public bool IsEmpty()
+    {
+        bool returnal = (currMeal == null) ? true : false;
+        return returnal;
+    }
 }
