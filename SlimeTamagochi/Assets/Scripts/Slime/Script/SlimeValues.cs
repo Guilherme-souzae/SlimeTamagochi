@@ -18,8 +18,6 @@ public class SlimeValues : MonoBehaviour
     [Range(0, 100)] public int ENERGY_DANGER_LOW, ENERGY_DANGER_HIGH;
 
     [Header("Estado de homeostase")]
-    public bool generalOmeostasis;
-    public bool isInCystForm;
     public bool phOmeostasis;
     public bool humidityOmeostasis;
     public bool hungerOmeostasis;
@@ -27,7 +25,8 @@ public class SlimeValues : MonoBehaviour
 
     public SlimeStats stats;
     private ValueState state;
-
+    private bool isDying;
+    
     private void Awake() => Instance = this;
 
     public void SetState(ValueState newState)
@@ -87,7 +86,20 @@ public class SlimeValues : MonoBehaviour
         hungerOmeostasis = !(stats.hunger <= HUNGER_DANGER_LOW || stats.hunger >= HUNGER_DANGER_HIGH);
         energyOmeostasis = !(stats.energy <= ENERGY_DANGER_LOW || stats.energy >= ENERGY_DANGER_HIGH);
 
-        generalOmeostasis = phOmeostasis && humidityOmeostasis && hungerOmeostasis && energyOmeostasis;
+        bool tempIsDying = !(phOmeostasis && humidityOmeostasis && hungerOmeostasis && energyOmeostasis);
+
+        if (tempIsDying && !isDying)
+        {
+            isDying = true;
+            Debug.Log("⚠️ Slime em risco! Iniciando contagem para morte.");
+            SlimeTimers.Instance?.StartDyingCountdown();
+        }
+        else if (!tempIsDying && isDying)
+        {
+            isDying = false;
+            Debug.Log("✅ Slime está seguro. Cancelando contagem de morte.");
+            SlimeTimers.Instance?.CeaseDyingCountdown();
+        }
 
         ShowDebug();
     }

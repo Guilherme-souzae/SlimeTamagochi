@@ -6,6 +6,9 @@ public class SlimeTimers : MonoBehaviour
 {
     public static SlimeTimers Instance;
 
+    [Header("Contagem de morte em minutos")]
+    public int DEATH_COUNTDOWN;
+    
     [Header("Taxas de variação")]
     [Range(-100, 100)] public int PH_CHANGE_RATE;
     [Range(-100, 100)] public int HUMIDITY_CHANGE_RATE;
@@ -20,7 +23,9 @@ public class SlimeTimers : MonoBehaviour
 
     [Header("Divisor de tempo")]
     [Range(1, 60)] public int TIME_DIVISOR = 60;
-
+    
+    private Coroutine dyingCoroutine;
+    
     private void Awake() => Instance = this;
 
     private void Start()
@@ -36,6 +41,38 @@ public class SlimeTimers : MonoBehaviour
 
     private void OnApplicationQuit() => SaveSystem.SaveSlime();
 
+    public void StartDyingCountdown()
+    {
+        if (dyingCoroutine == null)
+        {
+            dyingCoroutine = StartCoroutine(DyingCountdown());
+        }
+    }
+
+    public void CeaseDyingCountdown()
+    {
+        if (dyingCoroutine != null)
+        {
+            StopCoroutine(dyingCoroutine);
+            dyingCoroutine = null;
+        }
+    }
+
+    private IEnumerator DyingCountdown()
+    {
+        yield return new WaitForSeconds(DEATH_COUNTDOWN * TIME_DIVISOR);
+        Die();
+    }
+
+    private void Die()
+    {
+        Debug.Log("Slime morreu");
+        SlimeValues.Instance.SetState(ValueState.CYST);
+        SlimeBehavior.Instance.SetState(BehaviorState.CYST);
+        SaveSystem.SaveSlime();
+    }
+
+    
     private IEnumerator ActivePhUpdate()
     {
         while (true)

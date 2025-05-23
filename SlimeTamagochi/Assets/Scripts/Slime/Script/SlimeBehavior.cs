@@ -15,6 +15,8 @@ public class SlimeBehavior : MonoBehaviour
 {
     public static SlimeBehavior Instance;
 
+    public GameObject SlimeMesh, CystMesh;
+
     [Header("Dependências do cenário")]
     public GameObject plate;
     public GameObject bed;
@@ -55,6 +57,17 @@ public class SlimeBehavior : MonoBehaviour
         {
             SetState(BehaviorState.IDLE);
         }
+
+        if (buffer.isCyst == true)
+        {
+            SlimeMesh.SetActive(true);
+            CystMesh.SetActive(false);
+        }
+        else
+        {
+            SlimeMesh.SetActive(true);
+            CystMesh.SetActive(false);
+        }
     }
 
     public void SetState(BehaviorState newState)
@@ -65,6 +78,11 @@ public class SlimeBehavior : MonoBehaviour
             Decide();
         }
     }
+
+	public BehaviorState GetState()
+	{
+		return state;
+	}
 
     private void Decide()
     {
@@ -85,6 +103,11 @@ public class SlimeBehavior : MonoBehaviour
             case BehaviorState.GOING_TO_SLEEP:
                 destination = bed.transform.position;
                 InvokeRepeating(nameof(Jump), 0f, jumpInterval);
+                break;
+            case BehaviorState.CYST:
+                SlimeMesh.SetActive(false);
+                CystMesh.SetActive(true);
+                CystMesh.transform.position = transform.position;
                 break;
         }
     }
@@ -107,7 +130,7 @@ public class SlimeBehavior : MonoBehaviour
         PlateScript.Instance?.ShowMeal(false);
         SetState(BehaviorState.IDLE);
     }
-
+    
     private void OnCollisionEnter(Collision collision)
     {
         grounded = true;
