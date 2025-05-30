@@ -24,12 +24,17 @@ public class UIManager : MonoBehaviour
     {
         // Ligações dos botões com os métodos
         eatingActivateButton?.onClick.AddListener(GoEat);
+        eatingActivateButton?.onClick.AddListener(AwakeTheSlime);
+        
         energyActivateButton?.onClick.AddListener(GoSleep);
-
+        energyActivateButton?.onClick.AddListener(AwakeTheSlime);
+        
         phMinigameActivateButton?.onClick.AddListener(ShowPhMinigame);
+        phMinigameActivateButton?.onClick.AddListener(AwakeTheSlime);
         if (phMinigamePanel != null) phMinigamePanel.SetActive(false);
 
         humidityActivateButton?.onClick.AddListener(ShowHumidityMinigame);
+        humidityActivateButton?.onClick.AddListener(AwakeTheSlime);
         if (humidityMinigamePanel != null) humidityMinigamePanel.SetActive(false);
     }
 
@@ -110,6 +115,14 @@ public class UIManager : MonoBehaviour
         if (SlimeBehavior.Instance != null)
         {
             SlimeBehavior.Instance.SetState(BehaviorState.GOING_TO_SLEEP);
+        }
+    }
+
+    private void AwakeTheSlime()
+    {
+        if (SlimeValues.Instance != null)
+        {
+            SlimeValues.Instance.SetState(ValueState.IDLE);
         }
     }
 }

@@ -1,16 +1,21 @@
 using UnityEngine;
+using TMPro;
 
 public enum ValueState
 {
     IDLE,
-    SLEEPING,
-    CYST
+    SLEEPING
 }
 
 public class SlimeValues : MonoBehaviour
 {
     public static SlimeValues Instance;
-
+    [Header("Dependencias UI")]
+    public TextMeshProUGUI UIph;
+    public TextMeshProUGUI UIhumidity;
+    public TextMeshProUGUI UIhunger;
+    public TextMeshProUGUI UIenergy;
+    
     [Header("Limites perigosos")]
     [Range(0, 100)] public int PH_DANGER_LOW, PH_DANGER_HIGH;
     [Range(0, 100)] public int HUMIDITY_DANGER_LOW, HUMIDITY_DANGER_HIGH;
@@ -42,29 +47,24 @@ public class SlimeValues : MonoBehaviour
 
     public void IncreasePh(int x)
     {
-        if (state == ValueState.CYST) return;
         stats.ph = ClampStat(stats.ph + x);
         checkOmeostasis();
     }
 
     public void IncreaseHumidity(int x)
     {
-        if (state == ValueState.CYST) return;
         stats.humidity = ClampStat(stats.humidity + x);
         checkOmeostasis();
     }
 
     public void IncreaseHunger(int x)
     {
-        if (state == ValueState.CYST) return;
         stats.hunger = ClampStat(stats.hunger + x);
         checkOmeostasis();
     }
 
     public void IncreaseEnergy(int x)
     {
-        if (state == ValueState.CYST) return;
-
         int delta = (state == ValueState.SLEEPING) ? -x : x;
         stats.energy = ClampStat(stats.energy + delta);
         checkOmeostasis();
@@ -97,6 +97,9 @@ public class SlimeValues : MonoBehaviour
 
     private void ShowDebug()
     {
-        Debug.Log($"ESTADO DO SLIME ATUALIZADO\nPH: {stats.ph}, Humidity: {stats.humidity}, Hunger: {stats.hunger}, Energy: {stats.energy}");
+        UIph.text = "Ph: " + stats.ph;
+        UIhumidity.text = "Hum: " + stats.humidity;
+        UIhunger.text = "Hun: " + stats.hunger;
+        UIenergy.text = "Energy: " + stats.energy;
     }
 }

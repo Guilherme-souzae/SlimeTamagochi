@@ -7,8 +7,7 @@ public enum BehaviorState
     GOING_TO_EAT,
     EATING,
     GOING_TO_SLEEP,
-    SLEEPING,
-    CYST
+    SLEEPING
 }
 
 public class SlimeBehavior : MonoBehaviour
@@ -130,8 +129,8 @@ public class SlimeBehavior : MonoBehaviour
         grounded = false;
     }
 
-    public bool GetSleeping()
+    public BehaviorState GetState()
     {
-        return state == BehaviorState.SLEEPING;
+        return state;
     }
 }

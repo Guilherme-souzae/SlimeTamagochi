@@ -12,7 +12,7 @@ public class DataHolder
     public DataHolder()
     {
         lastTime = (int)DateTimeOffset.UtcNow.ToUnixTimeSeconds();
-        isSleeping = (SlimeBehavior.Instance.GetSleeping()) ? true : false;
+        isSleeping = (SlimeBehavior.Instance.GetState() == BehaviorState.SLEEPING || SlimeBehavior.Instance.GetState() == BehaviorState.GOING_TO_SLEEP);
         stats = new int[4];
         stats[0] = SlimeValues.Instance.stats.ph;
         stats[1] = SlimeValues.Instance.stats.humidity;
