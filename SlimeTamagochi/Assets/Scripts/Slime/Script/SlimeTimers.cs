@@ -6,6 +6,12 @@ public class SlimeTimers : MonoBehaviour
 {
     public static SlimeTimers Instance;
 
+    public GameObject slimeFisics;
+    public GameObject cyst;
+    
+    [Header("Tempo para morrer")] 
+    public int DEATH_TIME;
+    
     [Header("Taxas de variação")]
     [Range(-100, 100)] public int PH_CHANGE_RATE;
     [Range(-100, 100)] public int HUMIDITY_CHANGE_RATE;
@@ -21,8 +27,38 @@ public class SlimeTimers : MonoBehaviour
     [Header("Divisor de tempo")]
     [Range(1, 60)] public int TIME_DIVISOR = 60;
 
+    Coroutine deathCoroutine;
     private void Awake() => Instance = this;
 
+    public void StartDeathCountdown()
+    {
+        if (deathCoroutine == null)
+        {
+            deathCoroutine = StartCoroutine(DeathCountdown());
+        }
+    }
+
+    public void StopDeathCountdown()
+    {
+        if (deathCoroutine != null)
+        {
+            StopCoroutine(deathCoroutine);
+            deathCoroutine = null;
+        }
+    }
+
+    private IEnumerator DeathCountdown()
+    {
+        yield return new WaitForSeconds(DEATH_TIME * TIME_DIVISOR);
+        DieAll();
+    }
+
+    private void DieAll()
+    {
+        Instantiate(cyst, slimeFisics.transform.position, Quaternion.identity);
+        Destroy(gameObject);
+    }
+    
     private void Start()
     {
         var buffer = SaveSystem.LoadSlime();
@@ -71,7 +107,7 @@ public class SlimeTimers : MonoBehaviour
             SlimeValues.Instance?.IncreaseEnergy(ENERGY_CHANGE_RATE);
         }
     }
-
+    
     private void PassiveUpdate(DataHolder buffer)
     {
         int lastTime = buffer.lastTime;

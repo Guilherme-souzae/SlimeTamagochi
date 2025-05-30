@@ -631,6 +631,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7256821b69fb2e34c8c80d410aa31a14, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  slimeFisics: {fileID: 297430435}
+  cyst: {fileID: 2061302991807106784, guid: 2d9c512316c0ab94d9043798dc1a95cd, type: 3}
+  DEATH_TIME: 10
   PH_CHANGE_RATE: 7
   HUMIDITY_CHANGE_RATE: -15
   HUNGER_CHANGE_RATE: -1

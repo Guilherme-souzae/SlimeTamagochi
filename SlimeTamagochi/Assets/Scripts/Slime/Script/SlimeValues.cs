@@ -89,6 +89,14 @@ public class SlimeValues : MonoBehaviour
 
         generalOmeostasis = phOmeostasis && humidityOmeostasis && hungerOmeostasis && energyOmeostasis;
 
+        if (generalOmeostasis)
+        {
+            SlimeTimers.Instance.StopDeathCountdown();
+        }
+        else 
+        {
+            SlimeTimers.Instance.StartDeathCountdown();
+        }
         ShowDebug();
     }
 
