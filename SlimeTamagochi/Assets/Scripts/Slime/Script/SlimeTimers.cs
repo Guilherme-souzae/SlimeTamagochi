@@ -56,6 +56,7 @@ public class SlimeTimers : MonoBehaviour
     private void DieAll()
     {
         Instantiate(cyst, slimeFisics.transform.position, Quaternion.identity);
+        UIManager.Instance.Die();
         Destroy(gameObject);
     }
     

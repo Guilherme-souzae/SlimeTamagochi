@@ -72,6 +72,7 @@ public class SlimeBehavior : MonoBehaviour
         switch (state)
         {
             case BehaviorState.IDLE:
+                destination = Vector3.zero;
                 InvokeRepeating(nameof(Jump), 0f, jumpInterval);
                 break;
             case BehaviorState.GOING_TO_EAT:
@@ -111,16 +112,19 @@ public class SlimeBehavior : MonoBehaviour
     {
         grounded = true;
 
-        if (collision.gameObject.CompareTag("Plate") && state == BehaviorState.GOING_TO_EAT)
-        {
-            SetState(BehaviorState.EATING);
-        }
-
         if (collision.gameObject.CompareTag("Bed") && state == BehaviorState.GOING_TO_SLEEP)
         {
             Debug.Log("Slime está dormindo");
             SetState(BehaviorState.SLEEPING);
             SlimeValues.Instance?.SetState(ValueState.SLEEPING);
+        }
+    }
+
+    public void Bonappetit()
+    {
+        if (state == BehaviorState.GOING_TO_EAT)
+        {
+            SetState(BehaviorState.EATING);
         }
     }
 

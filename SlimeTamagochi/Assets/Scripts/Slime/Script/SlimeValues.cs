@@ -24,11 +24,13 @@ public class SlimeValues : MonoBehaviour
 
     [Header("Estado de homeostase")]
     public bool generalOmeostasis;
-    public bool isInCystForm;
     public bool phOmeostasis;
     public bool humidityOmeostasis;
     public bool hungerOmeostasis;
     public bool energyOmeostasis;
+
+    [Header("Deixa o slime imortal, usar para testes")]
+    public bool godmode;
 
     public SlimeStats stats;
     private ValueState state;
@@ -88,7 +90,8 @@ public class SlimeValues : MonoBehaviour
         energyOmeostasis = !(stats.energy <= ENERGY_DANGER_LOW || stats.energy >= ENERGY_DANGER_HIGH);
 
         generalOmeostasis = phOmeostasis && humidityOmeostasis && hungerOmeostasis && energyOmeostasis;
-
+        generalOmeostasis |= godmode;
+        
         if (generalOmeostasis)
         {
             SlimeTimers.Instance.StopDeathCountdown();

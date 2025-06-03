@@ -614,11 +614,11 @@ MonoBehaviour:
   ENERGY_DANGER_LOW: 0
   ENERGY_DANGER_HIGH: 0
   generalOmeostasis: 0
-  isInCystForm: 0
   phOmeostasis: 0
   humidityOmeostasis: 0
   hungerOmeostasis: 0
   energyOmeostasis: 0
+  godmode: 1
 --- !u!114 &260667386
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1038,14 +1038,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2e5e8938a2514e4ea79fd68b22abc40, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  UIph: {fileID: 1517280042}
   phMinigamePanel: {fileID: 1262519238}
   phMinigameActivateButton: {fileID: 1921573276}
   phSliderBehavior: {fileID: 194117074}
+  UIhumidity: {fileID: 1504905653}
   humidityMinigamePanel: {fileID: 1576610957}
   humidityActivateButton: {fileID: 1019110247}
   humidityMinigameBehavior: {fileID: 280847883}
+  UIhunger: {fileID: 887665926}
   restaurant: {fileID: 11400000, guid: db3b2cbc3dae0104a91994a35ff73fb1, type: 2}
   eatingActivateButton: {fileID: 1785963756}
+  UIenergy: {fileID: 2033709803}
   energyActivateButton: {fileID: 268296658}
 --- !u!114 &498985022
 MonoBehaviour:
@@ -1233,12 +1237,12 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.43678313, y: 0.05378521, z: 0.50294703}
-  m_Center: {x: -0.018305095, y: 0.03779722, z: -0.0075199674}
+  m_Size: {x: 0.43678313, y: 0.15094765, z: 0.50294703}
+  m_Center: {x: -0.018305095, y: 0.086378425, z: -0.0075199674}
 --- !u!114 &642338367
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1419,9 +1423,9 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 498985025}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -540.3, y: 170.20004}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 113, y: -136.49997}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &887665926
@@ -2522,6 +2526,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: SlimePhysics
       objectReference: {fileID: 0}
+    - target: {fileID: 1267698680211967077, guid: b4856c07ebdfe0349b342b0aa743d0c0,
+        type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 5605168932217558955, guid: b4856c07ebdfe0349b342b0aa743d0c0,
+        type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
     - target: {fileID: 8256917960605889880, guid: b4856c07ebdfe0349b342b0aa743d0c0,
         type: 3}
       propertyPath: m_Name
@@ -2782,9 +2796,9 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 498985025}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -540.3, y: 218.30005}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 113, y: -88.39996}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1504905653
@@ -2916,9 +2930,9 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 498985025}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -540.3, y: 271.7}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 113, y: -35}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1517280042
@@ -3485,9 +3499,9 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 498985025}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -540.3, y: 118.50003}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 113, y: -188.19998}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2033709803

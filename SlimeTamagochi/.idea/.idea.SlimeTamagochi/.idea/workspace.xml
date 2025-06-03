@@ -7,6 +7,9 @@
     <list default="true" id="9332b072-ea84-4e1c-8e79-b9639a223746" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.SlimeTamagochi/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.SlimeTamagochi/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Minigames/UIManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Minigames/UIManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Scenario/PlateScript.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Scenario/PlateScript.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Slime/Script/SlimeBehavior.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Slime/Script/SlimeBehavior.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Slime/Script/SlimeTimers.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Slime/Script/SlimeTimers.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Slime/Script/SlimeValues.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Slime/Script/SlimeValues.cs" afterDir="false" />
     </list>
@@ -115,7 +118,9 @@
       <workItem from="1748608143992" duration="2748000" />
       <workItem from="1748611286756" duration="42000" />
       <workItem from="1748611438008" duration="744000" />
-      <workItem from="1748614364602" duration="3088000" />
+      <workItem from="1748614364602" duration="3731000" />
+      <workItem from="1748623244918" duration="610000" />
+      <workItem from="1748967955494" duration="2046000" />
     </task>
     <servers />
   </component>

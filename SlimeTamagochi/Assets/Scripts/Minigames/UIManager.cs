@@ -1,25 +1,33 @@
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class UIManager : MonoBehaviour
 {
+    public static UIManager Instance;
     [Header("Dependências - PH")]
+    public TextMeshProUGUI UIph;
     public GameObject phMinigamePanel;
     public Button phMinigameActivateButton;
     public PhSliderBehavior phSliderBehavior;
 
     [Header("Dependências - Umidade")]
+    public TextMeshProUGUI UIhumidity;
     public GameObject humidityMinigamePanel;
     public Button humidityActivateButton;
     public HumidityMinigameBehavior humidityMinigameBehavior;
 
     [Header("Dependências - Fome")]
+    public TextMeshProUGUI UIhunger;
     public ItemShop restaurant;
     public Button eatingActivateButton;
 
-    [Header("Dependências - Energia")]
+    [Header("Dependências - Energia")] 
+    public TextMeshProUGUI UIenergy;
     public Button energyActivateButton;
-
+    
+    private void Awake() => Instance = this;
+    
     private void Start()
     {
         // Ligações dos botões com os métodos
@@ -82,6 +90,10 @@ public class UIManager : MonoBehaviour
     // Utilidades da interface
     private void HideButtons()
     {
+        UIph?.gameObject.SetActive(false);
+        UIhumidity?.gameObject.SetActive(false);
+        UIhunger?.gameObject.SetActive(false);
+        UIenergy?.gameObject.SetActive(false);
         phMinigameActivateButton?.gameObject.SetActive(false);
         humidityActivateButton?.gameObject.SetActive(false);
         eatingActivateButton?.gameObject.SetActive(false);
@@ -90,6 +102,10 @@ public class UIManager : MonoBehaviour
 
     private void ShowButtons()
     {
+        UIph?.gameObject.SetActive(true);
+        UIhumidity?.gameObject.SetActive(true);
+        UIhunger?.gameObject.SetActive(true);
+        UIenergy?.gameObject.SetActive(true);
         phMinigameActivateButton?.gameObject.SetActive(true);
         humidityActivateButton?.gameObject.SetActive(true);
         eatingActivateButton?.gameObject.SetActive(true);
@@ -124,5 +140,10 @@ public class UIManager : MonoBehaviour
         {
             SlimeValues.Instance.SetState(ValueState.IDLE);
         }
+    }
+
+    public void Die()
+    {
+        HideButtons();
     }
 }
