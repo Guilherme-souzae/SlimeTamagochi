@@ -4,16 +4,16 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class HumidityMinigameBehavior : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
+public class HumidityMinigameBehavior : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler, IPointerClickHandler
 {
-    [Header("Configurações do minigame")]
-    public float clickHumidityRate = 0.1f;
+    [Header("Configuraï¿½ï¿½es do minigame")]
+    public int clickHumidityRate = 1;
     public float minigameDuration = 5f;
     public float returnalStep = 0.2f;
     public float maxSpeedCap = 100f;
     [Range(0,100)] public int maxReturnal = 10;
 
-    [Header("Configurações da física")]
+    [Header("Configuraï¿½ï¿½es da fï¿½sica")]
     public float dragSmoothness = 10f;
     public float friction = 0.5f;
     public float bounciness = 1f;
@@ -69,7 +69,13 @@ public class HumidityMinigameBehavior : MonoBehaviour, IBeginDragHandler, IDragH
     {
         isDragging = false;
     }
-
+    
+    public void OnPointerClick(PointerEventData eventData)
+    {
+        Debug.Log("Objeto clicado!");
+        SlimeValues.Instance.IncreaseHumidity(1);
+    }
+    
     private void BounceOffEdges()
     {
         Vector2 pos = rectTransform.anchoredPosition;
@@ -114,8 +120,7 @@ public class HumidityMinigameBehavior : MonoBehaviour, IBeginDragHandler, IDragH
         float absSpeed = speed.magnitude;
         float normalized = Mathf.Clamp01(absSpeed / maxSpeedCap);
         int returnal = Mathf.RoundToInt(normalized * maxReturnal);
-
-        Debug.Log("Movimento detectado: " + returnal);
+        SlimeValues.Instance.IncreaseHumidity(-returnal);
     }
 
 }

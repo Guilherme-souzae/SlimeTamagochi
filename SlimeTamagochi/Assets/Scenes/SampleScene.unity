@@ -642,7 +642,7 @@ MonoBehaviour:
   HUMIDITY_CHANGE_TIME: 1
   HUNGER_CHANGE_TIME: 1
   ENERGY_CHANGE_TIME: 1
-  TIME_DIVISOR: 1
+  TIME_DIVISOR: 60
 --- !u!1 &268296656
 GameObject:
   m_ObjectHideFlags: 0
@@ -852,7 +852,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1553876c47fd1bd4aa07bccdaa3502b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clickHumidityRate: 0.1
+  clickHumidityRate: 1
   minigameDuration: 5
   returnalStep: 0.2
   maxSpeedCap: 100

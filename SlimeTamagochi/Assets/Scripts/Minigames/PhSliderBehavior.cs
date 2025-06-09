@@ -3,9 +3,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Random = UnityEngine.Random;
+
 public class PhSliderBehavior : MonoBehaviour
 {
-    [Header("Configurações do minigame")]
+    [Header("Configuraï¿½ï¿½es do minigame")]
     [Range(-100, -1)] public int minValue = -50;
     [Range(1, 100)] public int maxValue = 50;
     public float speed = 0.5f;
@@ -24,7 +26,7 @@ public class PhSliderBehavior : MonoBehaviour
         increase = true;
         running = true;
         phSlider.enabled = true;
-        phSlider.value = phSlider.maxValue / 2f;
+        phSlider.value = Random.Range(minValue, maxValue);
     }
 
     private void OnDisable()
