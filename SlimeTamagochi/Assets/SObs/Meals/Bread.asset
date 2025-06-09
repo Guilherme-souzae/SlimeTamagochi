@@ -12,9 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1fed54e985cabc14c817abfbeacb12aa, type: 3}
   m_Name: Bread
   m_EditorClassIdentifier: 
-  itemName: 
   ph: 0
   humidity: 0
-  hunger: 0
+  hunger: 15
   energy: 0
   imagem: {fileID: 21300000, guid: c728868677dfad541b6543a1f2aec055, type: 3}

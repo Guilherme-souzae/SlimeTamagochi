@@ -12,9 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1fed54e985cabc14c817abfbeacb12aa, type: 3}
   m_Name: Fish
   m_EditorClassIdentifier: 
-  itemName: 
   ph: 0
   humidity: 0
-  hunger: 0
+  hunger: 30
   energy: 0
   imagem: {fileID: 21300000, guid: 9008780582d3efe4fb4acfc2a510a77d, type: 3}

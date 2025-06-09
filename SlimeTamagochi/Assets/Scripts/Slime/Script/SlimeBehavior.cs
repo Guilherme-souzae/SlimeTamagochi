@@ -104,7 +104,14 @@ public class SlimeBehavior : MonoBehaviour
     private IEnumerator Chill(float seconds)
     {
         yield return new WaitForSeconds(seconds);
-        PlateScript.Instance?.ShowMeal(false);
+
+        if (state == BehaviorState.EATING)
+        {
+            PlateScript.Instance.ShowMeal(false);
+            SlimeValues.Instance.Consume(PlateScript.Instance.GetMeal());
+            PlateScript.Instance.SetMealEmpty();
+        }
+        
         SetState(BehaviorState.IDLE);
     }
 

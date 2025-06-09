@@ -23,6 +23,12 @@ public class PlateScript : MonoBehaviour
         ShowMeal(true);
     }
 
+    public void SetMealEmpty()
+    {
+        currMeal = null;
+        ShowMeal(false);
+    }
+    
     public void ShowMeal(bool flag)
     {
         mealSprite.enabled = flag;
@@ -32,6 +38,11 @@ public class PlateScript : MonoBehaviour
     {
         bool returnal = (currMeal == null) ? true : false;
         return returnal;
+    }
+
+    public ItemData GetMeal()
+    {
+        return currMeal;
     }
     
     private void OnTriggerEnter(Collider player)

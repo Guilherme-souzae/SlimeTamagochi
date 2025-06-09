@@ -12,9 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1fed54e985cabc14c817abfbeacb12aa, type: 3}
   m_Name: Eggplant
   m_EditorClassIdentifier: 
-  itemName: 
   ph: 0
   humidity: 0
-  hunger: 0
+  hunger: 20
   energy: 0
   imagem: {fileID: 21300000, guid: b4c9f99162deca84ebc6c689c9df3de9, type: 3}
