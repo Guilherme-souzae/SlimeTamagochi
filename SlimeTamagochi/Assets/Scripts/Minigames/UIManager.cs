@@ -155,7 +155,7 @@ public class UIManager : MonoBehaviour
         respawnButton.gameObject.SetActive(true);
     }
 
-    private void RespawnTheSlime()
+    public void RespawnTheSlime()
     {
         ShowButtons();
         respawnButton.gameObject.SetActive(false);

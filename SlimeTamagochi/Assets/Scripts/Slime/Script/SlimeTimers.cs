@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class SlimeTimers : MonoBehaviour
 {
@@ -13,8 +14,8 @@ public class SlimeTimers : MonoBehaviour
     public int DEATH_TIME;
     
     [Header("Taxas de variação")]
-    [Range(-100, 100)] public int PH_CHANGE_RATE;
-    [Range(-100, 100)] public int HUMIDITY_CHANGE_RATE;
+    [Range(0, 100)] public int PH_CHANGE_RATE;
+    [Range(0, 100)] public int HUMIDITY_CHANGE_RATE;
     [Range(-100, -1)] public int HUNGER_CHANGE_RATE;
     [Range(-100, -1)] public int ENERGY_CHANGE_RATE;
 
@@ -64,7 +65,8 @@ public class SlimeTimers : MonoBehaviour
     {
         var buffer = SaveSystem.LoadSlime();
         if (buffer != null) PassiveUpdate(buffer);
-
+        else UIManager.Instance.RespawnTheSlime();
+        
         StartCoroutine(ActivePhUpdate());
         StartCoroutine(ActiveHumidityUpdate());
         StartCoroutine(ActiveHungerUpdate());
@@ -78,7 +80,8 @@ public class SlimeTimers : MonoBehaviour
         while (true)
         {
             yield return new WaitForSeconds(PH_CHANGE_TIME * TIME_DIVISOR);
-            SlimeValues.Instance?.IncreasePh(PH_CHANGE_RATE);
+            int signal = (Random.Range(0,2) == 0) ? 1 : -1;
+            SlimeValues.Instance?.IncreasePh(signal * PH_CHANGE_RATE);
         }
     }
 
@@ -87,7 +90,8 @@ public class SlimeTimers : MonoBehaviour
         while (true)
         {
             yield return new WaitForSeconds(HUMIDITY_CHANGE_TIME * TIME_DIVISOR);
-            SlimeValues.Instance?.IncreaseHumidity(HUMIDITY_CHANGE_RATE);
+            int signal = (Random.Range(0,2) == 0) ? 1 : -1;
+            SlimeValues.Instance?.IncreaseHumidity(signal * HUMIDITY_CHANGE_RATE);
         }
     }
 

@@ -19,8 +19,8 @@ public class SlimeValues : MonoBehaviour
     [Header("Limites perigosos")]
     [Range(0, 100)] public int PH_DANGER_LOW, PH_DANGER_HIGH;
     [Range(0, 100)] public int HUMIDITY_DANGER_LOW, HUMIDITY_DANGER_HIGH;
-    [Range(0, 100)] public int HUNGER_DANGER_LOW, HUNGER_DANGER_HIGH;
-    [Range(0, 100)] public int ENERGY_DANGER_LOW, ENERGY_DANGER_HIGH;
+    [Range(0, 100)] public int HUNGER_DANGER_LOW;
+    [Range(0, 100)] public int ENERGY_DANGER_LOW;
 
     [Header("Estado de homeostase")]
     public bool generalOmeostasis;
@@ -86,8 +86,8 @@ public class SlimeValues : MonoBehaviour
     {
         phOmeostasis = !(stats.ph <= PH_DANGER_LOW || stats.ph >= PH_DANGER_HIGH);
         humidityOmeostasis = !(stats.humidity <= HUMIDITY_DANGER_LOW || stats.humidity >= HUMIDITY_DANGER_HIGH);
-        hungerOmeostasis = !(stats.hunger <= HUNGER_DANGER_LOW || stats.hunger >= HUNGER_DANGER_HIGH);
-        energyOmeostasis = !(stats.energy <= ENERGY_DANGER_LOW || stats.energy >= ENERGY_DANGER_HIGH);
+        hungerOmeostasis = !(stats.hunger <= HUNGER_DANGER_LOW);
+        energyOmeostasis = !(stats.energy <= ENERGY_DANGER_LOW);
 
         generalOmeostasis = phOmeostasis && humidityOmeostasis && hungerOmeostasis && energyOmeostasis;
         generalOmeostasis |= godmode;
