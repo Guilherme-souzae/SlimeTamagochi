@@ -16,6 +16,18 @@ public static class SaveSystem
         stream.Close();
     }
 
+    public static void RespawnSlime(int ph, int hum, int hung, int energy)
+    {
+        BinaryFormatter formatter = new BinaryFormatter();
+        string path = Application.persistentDataPath + "/slime.fun";
+        FileStream stream = new FileStream(path, FileMode.Create);
+
+        DataHolder data = new DataHolder(ph, hum, hung, energy);
+
+        formatter.Serialize(stream, data);
+        stream.Close();
+    }
+    
     public static DataHolder LoadSlime()
     {
         string path = Application.persistentDataPath + "/slime.fun";

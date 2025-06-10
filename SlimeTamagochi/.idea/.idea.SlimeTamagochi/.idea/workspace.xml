@@ -7,8 +7,7 @@
     <list default="true" id="9332b072-ea84-4e1c-8e79-b9639a223746" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.SlimeTamagochi/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.SlimeTamagochi/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Minigames/HumidityMinigameBehavior.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Minigames/HumidityMinigameBehavior.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Minigames/PhSliderBehavior.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Minigames/PhSliderBehavior.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Minigames/UIManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Minigames/UIManager.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -119,6 +118,7 @@
       <workItem from="1748623244918" duration="610000" />
       <workItem from="1748967955494" duration="2046000" />
       <workItem from="1749507234817" duration="2475000" />
+      <workItem from="1749537160080" duration="845000" />
     </task>
     <servers />
   </component>

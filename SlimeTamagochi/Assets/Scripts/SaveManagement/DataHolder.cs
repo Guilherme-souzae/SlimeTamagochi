@@ -19,4 +19,15 @@ public class DataHolder
         stats[2] = SlimeValues.Instance.stats.hunger;
         stats[3] = SlimeValues.Instance.stats.energy;
     }
+    
+    public DataHolder(int ph, int hum, int hung, int energy)
+    {
+        lastTime = (int)DateTimeOffset.UtcNow.ToUnixTimeSeconds();
+        isSleeping = false;
+        stats = new int[4];
+        stats[0] = ph;
+        stats[1] = hum;
+        stats[2] = hung;
+        stats[3] = energy;
+    }
 }

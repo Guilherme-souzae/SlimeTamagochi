@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class UIManager : MonoBehaviour
 {
@@ -25,6 +26,9 @@ public class UIManager : MonoBehaviour
     [Header("Dependências - Energia")] 
     public TextMeshProUGUI UIenergy;
     public Button energyActivateButton;
+
+    [Header("Respawn")] 
+    public Button respawnButton;
     
     private void Awake() => Instance = this;
     
@@ -44,6 +48,9 @@ public class UIManager : MonoBehaviour
         humidityActivateButton?.onClick.AddListener(ShowHumidityMinigame);
         humidityActivateButton?.onClick.AddListener(AwakeTheSlime);
         if (humidityMinigamePanel != null) humidityMinigamePanel.SetActive(false);
+        
+        respawnButton?.onClick.AddListener(RespawnTheSlime);
+        if (respawnButton != null) respawnButton.gameObject.SetActive(false);
     }
 
     private void Update()
@@ -145,5 +152,15 @@ public class UIManager : MonoBehaviour
     public void Die()
     {
         HideButtons();
+        respawnButton.gameObject.SetActive(true);
+    }
+
+    private void RespawnTheSlime()
+    {
+        ShowButtons();
+        respawnButton.gameObject.SetActive(false);
+        Scene currentScene = SceneManager.GetActiveScene();
+        SaveSystem.RespawnSlime(50, 50, 100, 100);
+        SceneManager.LoadScene(currentScene.name);
     }
 }
