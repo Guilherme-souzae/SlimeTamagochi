@@ -5,16 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9332b072-ea84-4e1c-8e79-b9639a223746" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/../Slime/SlimeTamagochi_Data/Managed/Assembly-CSharp.dll" beforeDir="false" afterPath="$PROJECT_DIR$/../Slime/SlimeTamagochi_Data/Managed/Assembly-CSharp.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Slime/SlimeTamagochi_Data/boot.config" beforeDir="false" afterPath="$PROJECT_DIR$/../Slime/SlimeTamagochi_Data/boot.config" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Slime/SlimeTamagochi_Data/globalgamemanagers" beforeDir="false" afterPath="$PROJECT_DIR$/../Slime/SlimeTamagochi_Data/globalgamemanagers" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Slime/SlimeTamagochi_Data/globalgamemanagers.assets" beforeDir="false" afterPath="$PROJECT_DIR$/../Slime/SlimeTamagochi_Data/globalgamemanagers.assets" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Slime/SlimeTamagochi_Data/level0" beforeDir="false" afterPath="$PROJECT_DIR$/../Slime/SlimeTamagochi_Data/level0" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Slime/SlimeTamagochi_Data/sharedassets0.assets" beforeDir="false" afterPath="$PROJECT_DIR$/../Slime/SlimeTamagochi_Data/sharedassets0.assets" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.SlimeTamagochi/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.SlimeTamagochi/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Minigames/UIManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Minigames/UIManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Slime/Script/SlimeTimers.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Slime/Script/SlimeTimers.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Slime/Script/SlimeValues.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Slime/Script/SlimeValues.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -129,6 +120,7 @@
       <workItem from="1749537160080" duration="1022000" />
       <workItem from="1749558389023" duration="1152000" />
       <workItem from="1749559585017" duration="25000" />
+      <workItem from="1757814711277" duration="1691000" />
     </task>
     <servers />
   </component>

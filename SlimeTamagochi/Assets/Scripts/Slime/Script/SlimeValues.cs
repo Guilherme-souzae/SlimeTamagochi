@@ -108,9 +108,9 @@ public class SlimeValues : MonoBehaviour
 
     private void ShowDebug()
     {
-        UIph.text = "Ph: " + stats.ph;
-        UIhumidity.text = "Hum: " + stats.humidity;
-        UIhunger.text = "Hun: " + stats.hunger;
-        UIenergy.text = "Energy: " + stats.energy;
+        UIph.text = "Ph: " + stats.ph + ((phOmeostasis == false) ? "    Danger!" : "");
+        UIhumidity.text = "Hum: " + stats.humidity + ((humidityOmeostasis == false) ? "    Danger!" : "");
+        UIhunger.text = "Hun: " + stats.hunger + ((hungerOmeostasis == false) ? "    Danger!" : "");
+        UIenergy.text = "Energy: " + stats.energy + ((energyOmeostasis == false) ? "    Danger!" : "");
     }
 }
